@@ -15,7 +15,11 @@ export const ensureCommand: Command = new Command("ensure")
 		"auto",
 	)
 	.option("-f, --force", "Re-download even if binaries already exist", false)
-	.option("-c, --cache <directory>", "Directory to use as the download cache")
+	.option(
+		"-c, --cache <directory>",
+		"Directory to use as the download cache",
+		`~/.cache/ragepkg/${process.platform}`,
+	)
 	.action(async (opts: EnsureOptions) => {
 		try {
 			await ensure(opts);

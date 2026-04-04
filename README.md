@@ -21,12 +21,12 @@ pnpm build
 ## Usage
 
 ```sh
-ragepkg ensure [options]
+ragepkg <command> [options]
 ```
 
 ### `ensure`
 
-Downloads RageMP server binaries into a target directory. Skips the download if the server binary already exists, unless `--force` is used.
+Downloads RageMP server binaries into a target directory. Downloaded files are cached under `~/.cache/ragepkg/<platform>/` (by default) and reused on subsequent runs. If a cached file's size differs from the remote, a warning is printed suggesting `--force`.
 
 **Options:**
 
@@ -35,6 +35,7 @@ Downloads RageMP server binaries into a target directory. Skips the download if 
 | `-d, --dir <directory>` | Directory to place server files in | `process.cwd()` |
 | `-p, --platform <platform>` | Target platform: `auto`, `linux`, `windows` | `auto` |
 | `-f, --force` | Skip cache and re-download even if binaries already exist | `false` |
+| `-c, --cache <directory>` | Override the cache directory | `~/.cache/ragepkg/<platform>` |
 
 **Examples:**
 
