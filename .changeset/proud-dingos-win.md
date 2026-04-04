@@ -1,0 +1,5 @@
+---
+"ragepkg": minor
+---
+
+Initial release

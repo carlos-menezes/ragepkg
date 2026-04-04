@@ -1,0 +1,43 @@
+{
+	"name": "ragepkg",
+	"version": "0.0.0",
+	"description": "",
+	"type": "module",
+	"scripts": {
+		"build": "rolldown -c rolldown.config.ts",
+		"format": "biome format --fix",
+		"lint": "biome lint --fix",
+		"changeset": "changeset",
+		"version": "changeset version",
+		"release": "pnpm build && changeset publish"
+	},
+	"engines": {
+		"node": "v24.14.1"
+	},
+	"keywords": [
+		"ragemp",
+		"gtav"
+	],
+	"author": "",
+	"license": "ISC",
+	"bin": {
+		"ragepkg": "dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"packageManager": "pnpm@10.33.0",
+	"devDependencies": {
+		"@biomejs/biome": "2.4.9",
+		"@changesets/cli": "^2.30.0",
+		"@types/cli-progress": "^3.11.6",
+		"@types/node": "^25.5.0",
+		"rolldown": "1.0.0-rc.12",
+		"typescript": "^6.0.2"
+	},
+	"dependencies": {
+		"cli-progress": "^3.12.0",
+		"commander": "^14.0.3",
+		"pretty-bytes": "^7.1.0"
+	}
+}
