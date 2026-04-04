@@ -1,4 +1,4 @@
-import { createWriteStream, mkdirSync } from "node:fs";
+import { createWriteStream, existsSync, mkdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
@@ -9,10 +9,25 @@ export async function download(
 	baseUrl: string,
 	files: string[],
 	destDir: string,
+	force = false,
 ): Promise<void> {
 	for (const file of files) {
 		const outputPath = join(destDir, file);
 		mkdirSync(resolve(outputPath, ".."), { recursive: true });
+
+		if (!force && existsSync(outputPath)) {
+			const head = await fetch(`${baseUrl}${file}`, { method: "HEAD" });
+			const remoteSize = Number(head.headers.get("content-length") ?? 0);
+			const localSize = statSync(outputPath).size;
+			if (remoteSize > 0 && remoteSize !== localSize) {
+				console.warn(
+					`⚠️  ${file} may be outdated (cached: ${prettyBytes(localSize)}, remote: ${prettyBytes(remoteSize)}). Use --force to re-download.`,
+				);
+			} else {
+				console.log(`📦 ${file} (cached @ \`${outputPath}\`)`);
+			}
+			continue;
+		}
 
 		const response = await fetch(`${baseUrl}${file}`);
 		if (!response.ok) {
@@ -26,7 +41,7 @@ export async function download(
 
 		const progressBar = new cliProgress.SingleBar(
 			{
-				format: `📁 ${file} [{bar}] {percentage}% | {valuePretty}/{totalPretty}`,
+				format: `➕ ${file} [{bar}] {percentage}% | {valuePretty}/{totalPretty}`,
 				clearOnComplete: false,
 				stopOnComplete: true,
 			},

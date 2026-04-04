@@ -1,5 +1,6 @@
 import { program } from "commander";
 import pkgJson from "../package.json" with { type: "json" };
+import { cleanCommand } from "./commands/clean.js";
 import { ensureCommand } from "./commands/ensure.js";
 
 program
@@ -9,5 +10,6 @@ program
 	)
 	.version(pkgJson.version);
 program.addCommand(ensureCommand);
+program.addCommand(cleanCommand);
 
 program.parse();

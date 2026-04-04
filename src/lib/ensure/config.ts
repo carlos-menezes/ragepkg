@@ -12,11 +12,13 @@ const supportedPlatforms: Record<SupportedPlatform, SystemConfig> = {
 			"bin/loader.mjs",
 		],
 		binary: "ragemp-server.exe",
+		cleanPaths: ["ragemp-server.exe", "BugTrap-x64.dll", "bin"],
 	},
 	linux: {
 		baseUrl: "https://cdn.rage.mp/updater/prerelease_server/server-files/",
 		files: ["linux_x64.tar.gz"],
 		binary: "ragemp-server",
+		cleanPaths: ["ragemp-server", "bin", "dotnet"],
 	},
 };
 

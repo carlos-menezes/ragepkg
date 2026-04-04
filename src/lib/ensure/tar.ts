@@ -7,7 +7,7 @@ export async function extractTarGz(
 	return new Promise((resolve, reject) => {
 		const child = spawn(
 			"tar",
-			["-xzvf", archivePath, "--strip-components=1", "-C", destDir],
+			["-xzf", archivePath, "--strip-components=1", "-C", destDir],
 			{ stdio: "inherit" },
 		);
 
@@ -18,6 +18,7 @@ export async function extractTarGz(
 				reject(new Error(`\`tar\` exited with code ${code ?? "unknown"}`));
 			}
 		});
+
 		child.on("error", reject);
 	});
 }
