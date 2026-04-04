@@ -1,6 +1,6 @@
 import { Command } from "commander";
-import { ensure } from "../lib/ensure.js";
 import type { EnsureOptions } from "../lib/ensure/types.js";
+import { ensure } from "../lib/ensure.js";
 
 export const ensureCommand: Command = new Command("ensure")
 	.description("Ensures RageMP server binaries exist in the target directory")
