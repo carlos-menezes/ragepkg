@@ -17,8 +17,7 @@ See `package.json` for specific versions.
 ## Installation
 
 ```sh
-pnpm install
-pnpm build
+pnpm install ragepkg
 ```
 
 ## Usage
