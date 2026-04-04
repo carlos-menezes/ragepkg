@@ -2,6 +2,7 @@ import { program } from "commander";
 import pkgJson from "../package.json" with { type: "json" };
 import { cleanCommand } from "./commands/clean.js";
 import { ensureCommand } from "./commands/ensure.js";
+import { purgeCommand } from "./commands/purge.js";
 
 program
 	.name("ragepkg")
@@ -11,5 +12,6 @@ program
 	.version(pkgJson.version);
 program.addCommand(ensureCommand);
 program.addCommand(cleanCommand);
+program.addCommand(purgeCommand);
 
 program.parse();

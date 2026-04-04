@@ -1,6 +1,9 @@
 # `ragepkg`
 
-[![asciicast](https://asciinema.org/a/899533.svg)](https://asciinema.org/a/899533)
+![NPM Version](https://img.shields.io/npm/v/ragepkg)
+![NPM Downloads](https://img.shields.io/npm/dm/ragepkg)
+
+[![asciicast](https://asciinema.org/a/899539.svg)](https://asciinema.org/a/899539)
 
 Multiplatform CLI tool to aid in developing [RageMP](https://rage.mp/) servers.
 
@@ -66,4 +69,24 @@ ragepkg clean --dir ./server
 
 # Remove Linux server files from a specific directory
 ragepkg clean --dir ./server --platform linux
+```
+
+### `purge`
+
+Removes all cached RageMP server files from the cache directory.
+
+**Options:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `-c, --cache <directory>` | Cache directory to purge | `~/.cache/ragepkg` |
+
+**Examples:**
+
+```sh
+# Purge the default cache
+ragepkg purge
+
+# Purge a custom cache directory
+ragepkg purge --cache ./my-cache
 ```
