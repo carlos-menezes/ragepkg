@@ -2,4 +2,4 @@
 "ragepkg": minor
 ---
 
-Initial release
+feat: release initial version of `ragepkg`

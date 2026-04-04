@@ -1,11 +1,13 @@
-# ragepkg
+# `ragepkg`
 
-A CLI tool to download and set up [RageMP](https://rage.mp/) server binaries for GTA V multiplayer server development.
+Multiplatform CLI tool to aid in developing [RageMP](https://rage.mp/) servers.
 
 ## Requirements
 
-- Node.js v24.14.1
-- pnpm v10.33.0
+See `package.json` for specific versions.
+
+- Node.js
+- pnpm
 
 ## Installation
 
@@ -28,7 +30,7 @@ Downloads RageMP server binaries into a target directory. Skips the download if 
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `-d, --dir <directory>` | Directory to place server files in | Current working directory |
+| `-d, --dir <directory>` | Directory to place server files in | `process.cwd()` |
 | `-p, --platform <platform>` | Target platform: `auto`, `linux`, `windows` | `auto` |
 | `-f, --force` | Re-download even if binaries already exist | `false` |
 
@@ -40,17 +42,4 @@ ragepkg ensure --dir ./server
 
 # Force re-download for Linux into a specific directory
 ragepkg ensure --dir ./server --platform linux --force
-```
-
-## Development
-
-```sh
-# Build
-pnpm build
-
-# Lint
-pnpm lint
-
-# Format
-pnpm format
 ```
