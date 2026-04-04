@@ -1,5 +1,7 @@
 # `ragepkg`
 
+[![asciicast](https://asciinema.org/a/899533.svg)](https://asciinema.org/a/899533)
+
 Multiplatform CLI tool to aid in developing [RageMP](https://rage.mp/) servers.
 
 ## Requirements
